@@ -1,6 +1,6 @@
 # AWS Cloud Labs - Portfolio
 
-Laboratorios prácticos de arquitectura en la nube realizados en AWS Academy (IFTS N°21 — Arquitectura de Sistemas en la Nube, 2026).
+Laboratorios prácticos de arquitectura en la nube realizados en AWS Academy (IFTS N°21 - Arquitectura de Sistemas en la Nube, 2026).
 
 Cada lab fue ejecutado en un entorno real de AWS (Learner Lab con créditos reales) y documentado con resultados obtenidos, no con valores de ejemplo.
 
