@@ -1,63 +1,46 @@
-# Lab 02 — IAM + S3 + EC2
+# AWS Cloud Labs - Portfolio
 
-## Qué construí
+Laboratorios prácticos de arquitectura en la nube realizados en AWS Academy (IFTS N°21 — Arquitectura de Sistemas en la Nube, 2026).
 
-Exploración de permisos IAM, creación de bucket S3 con versionado y despliegue de servidor web Apache en EC2 con configuración automática via User Data.
+Cada lab fue ejecutado en un entorno real de AWS (Learner Lab con créditos reales) y documentado con resultados obtenidos, no con valores de ejemplo.
 
-## Arquitectura
+---
+
+## Arquitectura progresiva
 
 ```
-Internet → EC2 (pub, sg HTTP:80 + SSH:22) → Apache web server
-                    ↓ IAM Instance Profile
-                   S3 Bucket (versionado habilitado)
+Lab 02  →  Lab 03  →  Lab 04  →  Lab 05  →  Lab 06  →  Lab 07
+IAM+S3      VPC         VPC+EC2    Contenedores  ALB+ASG     Flask+
++EC2        desde       +S3+IAM    +Serverless              Carga+CF
+            cero        integrado
 ```
 
-## Servicios usados
+Cada lab construye sobre el anterior. La VPC creada en el Lab 03 se reutiliza en todos los labs siguientes.
 
-`IAM` `S3` `EC2` `Security Groups`
+---
 
-## Lo que hice
+## Labs
 
-**IAM**
-- Exploré el rol LabRole y sus políticas AWS Managed adjuntas
-- Analicé el JSON de políticas IAM (Effect, Action, Resource)
-- Entendí por qué el Learner Lab bloquea `iam:CreateUser` e `iam:CreateRole` — principio de mínimo privilegio en acción
+| Lab | Tema | Servicios AWS |
+|---|---|---|
+| [Lab 02](./lab-02-iam-s3-ec2/) | IAM + S3 + EC2 | IAM, S3, EC2, Security Groups |
+| [Lab 03](./lab-03-vpc-networking/) | VPC desde cero | VPC, Subnets, IGW, NAT Gateway, Route Tables |
+| [Lab 04](./lab-04-vpc-ec2-s3-iam/) | Lab integrador | VPC, EC2, S3, IAM Instance Profile |
+| [Lab 05](./lab-05-containers-serverless/) | Contenedores y Serverless | EC2, Docker, ECS/Fargate (diseño), Lambda (diseño), SQS, SES |
+| [Lab 06](./lab-06-alb-asg/) | ALB + Auto Scaling | ALB, Target Groups, Launch Templates, ASG, CloudWatch |
+| [Lab 07](./lab-07-flask-alb-asg-pytest/) | App Flask escalable | Flask, ALB, ASG, pytest, CloudFront |
 
-**S3**
-- Creé bucket `lab-guzman-clase2` en us-east-1 con Block Public Access total
-- Habilité versionado y verifiqué que una eliminación con versionado activo genera un Delete Marker en lugar de borrar definitivamente
-- Subí y modifiqué un archivo para confirmar 2 versiones independientes
+---
 
-**EC2**
-- Lancé instancia `web-server-clase2` (Amazon Linux 2023, t3.micro) en subnet pública
-- User Data instaló Apache automáticamente antes del primer login
-- Verifiqué desde EC2 Instance Connect que el Instance Profile permite acceso a S3 sin credenciales manuales
+## Stack tecnológico
 
-## Resultados reales
+`AWS EC2` `AWS S3` `AWS VPC` `AWS IAM` `AWS ALB` `AWS Auto Scaling` `AWS CloudWatch` `AWS CloudFront` `Python` `Flask` `pytest` `Docker`
 
-| Verificación | Resultado |
-|---|---|
-| Bucket | `lab-guzman-clase2` |
-| Versiones del archivo modificado | 2 |
-| IP pública de la instancia | `3.94.81.4` |
-| Servidor web responde en http://IP | `Servidor ip-172-31-35-102.ec2.internal` |
-| AZ de la instancia | `use1-az6` |
-| ARN del rol en la instancia | `arn:aws:sts::563267999368:assumed-role/voclabs/user4948892=Tomas_Guzman` |
-| `aws s3 ls` lista el bucket | Sí |
+---
 
-## Conceptos clave
+## Sobre los labs
 
-- **Instance Profile**: permite que EC2 asuma un rol IAM y obtenga credenciales temporales via Instance Metadata Service — sin hardcodear keys
-- **User Data**: script que se ejecuta una sola vez al primer arranque, antes de cualquier conexión
-- **S3 Versioning + Delete Marker**: eliminar un objeto con versionado activo no lo borra — agrega un marcador. Las versiones anteriores siguen disponibles
-
-## Script User Data usado
-
-```bash
-#!/bin/bash
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
-echo "<h1>Servidor $(hostname -f)</h1>" > /var/www/html/index.html
-```
+- Entorno: AWS Academy Learner Lab (us-east-1, créditos reales)
+- Todos los resultados registrados son valores reales obtenidos durante la ejecución
+- Cada lab incluye limpieza de recursos para gestión de costos
+- La VPC personalizada (lab-vpc, 10.0.0.0/16) se mantiene entre labs como infraestructura base
