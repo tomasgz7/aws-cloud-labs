@@ -1,4 +1,4 @@
-# Lab 02 — IAM + S3 + EC2
+# Lab 02 - IAM + S3 + EC2
 
 ## Qué construí
 
@@ -47,9 +47,9 @@ Internet → EC2 (pub, sg HTTP:80 + SSH:22) → Apache web server
 
 ## Conceptos clave
 
-- **Instance Profile**: permite que EC2 asuma un rol IAM y obtenga credenciales temporales via Instance Metadata Service — sin hardcodear keys
+- **Instance Profile**: permite que EC2 asuma un rol IAM y obtenga credenciales temporales via Instance Metadata Service, sin hardcodear keys
 - **User Data**: script que se ejecuta una sola vez al primer arranque, antes de cualquier conexión
-- **S3 Versioning + Delete Marker**: eliminar un objeto con versionado activo no lo borra — agrega un marcador. Las versiones anteriores siguen disponibles
+- **S3 Versioning + Delete Marker**: eliminar un objeto con versionado activo no lo borra, agrega un marcador. Las versiones anteriores siguen disponibles
 
 ## Script User Data usado
 
