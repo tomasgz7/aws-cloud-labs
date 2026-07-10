@@ -21,7 +21,7 @@ Internet → EC2 (pub, sg HTTP:80 + SSH:22) → Apache web server
 **IAM**
 - Exploré el rol LabRole y sus políticas AWS Managed adjuntas
 - Analicé el JSON de políticas IAM (Effect, Action, Resource)
-- Entendí por qué el Learner Lab bloquea `iam:CreateUser` e `iam:CreateRole` — principio de mínimo privilegio en acción
+- Entendí por qué el Learner Lab bloquea `iam:CreateUser` e `iam:CreateRole` - principio de mínimo privilegio en acción
 
 **S3**
 - Creé bucket `lab-guzman-clase2` en us-east-1 con Block Public Access total

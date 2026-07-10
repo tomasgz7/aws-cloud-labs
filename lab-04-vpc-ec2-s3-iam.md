@@ -34,7 +34,7 @@ Internet → lab-igw → pub-a (10.0.1.0/24)
 | Verificación | Resultado |
 |---|---|
 | IP pública de la instancia | `54.236.15.239` |
-| Servidor web en http://IP | `Hola desde ip-10-0-1-194.ec2.internal — Clase 4` |
+| Servidor web en http://IP | `Hola desde ip-10-0-1-194.ec2.internal - Clase 4` |
 | AZ de la instancia | `us-east-1a (use1-az6)` |
 | ARN del rol | `arn:aws:sts::563267999368:assumed-role/voclabs/user4948892=Tomas_Guzman` |
 | `aws s3 ls` lista el bucket | Sí |
@@ -44,10 +44,10 @@ Internet → lab-igw → pub-a (10.0.1.0/24)
 
 ## Análisis IAM
 
-El LabRole tiene 7 políticas adjuntas. Se encontró un `Effect: Deny` explícito para `iam:GetPolicy`, lo que impide leer el detalle de las políticas internas del sandbox — principio de mínimo privilegio aplicado.
+El LabRole tiene 7 políticas adjuntas. Se encontró un `Effect: Deny` explícito para `iam:GetPolicy`, lo que impide leer el detalle de las políticas internas del sandbox - principio de mínimo privilegio aplicado.
 
 El bloqueo de `iam:CreateUser` e `iam:CreateRole` evita que los alumnos generen credenciales persistentes o afecten a otros usuarios del entorno compartido.
 
 ## Concepto clave
 
-La instancia EC2 puede acceder a S3 sin credenciales hardcodeadas porque tiene asignado un **IAM Instance Profile**. AWS entrega credenciales temporales automáticamente via el **Instance Metadata Service (IMDS)**. Este es el patrón correcto de seguridad en producción — nunca se ponen access keys en el código o en la instancia.
+La instancia EC2 puede acceder a S3 sin credenciales hardcodeadas porque tiene asignado un **IAM Instance Profile**. AWS entrega credenciales temporales automáticamente via el **Instance Metadata Service (IMDS)**. Este es el patrón correcto de seguridad en producción - nunca se ponen access keys en el código o en la instancia.

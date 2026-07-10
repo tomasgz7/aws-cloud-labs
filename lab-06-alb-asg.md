@@ -46,7 +46,7 @@ Política: cpu-60 (Target Tracking, CPU 60%)
 - Configuración reutilizable para que el ASG pueda lanzar instancias idénticas automáticamente
 
 **Auto Scaling Group**
-- ASG adjunto al Target Group del ALB — las nuevas instancias quedan disponibles automáticamente
+- ASG adjunto al Target Group del ALB - las nuevas instancias quedan disponibles automáticamente
 - Política Target Tracking `cpu-60`: si el CPU promedio sube del 60%, lanza instancias; si baja, las termina (respetando el mínimo de 1)
 
 ## Resultados reales
@@ -63,7 +63,7 @@ Política: cpu-60 (Target Tracking, CPU 60%)
 ## Conceptos clave
 
 - **ALB vs ASG**: el ALB distribuye tráfico, el ASG escala instancias, CloudWatch monitorea. Son tres responsabilidades separadas
-- **Target Tracking**: la política más simple — definís el objetivo (CPU 60%) y AWS ajusta el número de instancias automáticamente
+- **Target Tracking**: la política más simple - definís el objetivo (CPU 60%) y AWS ajusta el número de instancias automáticamente
 - **Multi-AZ**: el ALB en pub-a y pub-b garantiza que si una AZ falla, el tráfico sigue fluyendo por la otra
 - **Launch Template como receta**: el ASG usa el template para lanzar instancias idénticas sin configuración manual
 
@@ -79,7 +79,7 @@ TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" \
   -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
 IP=$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" \
   http://169.254.169.254/latest/meta-data/local-ipv4)
-echo "<h1>Servidor: $IP — Clase 6</h1>" > /var/www/html/index.html
+echo "<h1>Servidor: $IP - Clase 6</h1>" > /var/www/html/index.html
 ```
 
 Usa **IMDSv2** (token-based) en lugar de IMDSv1 - práctica recomendada de seguridad.
