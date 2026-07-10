@@ -23,12 +23,12 @@ Cada lab construye sobre el anterior. La VPC creada en el Lab 03 se reutiliza en
 
 | Lab | Tema | Servicios AWS |
 |---|---|---|
-| [Lab 02](./lab-02-iam-s3-ec2.md/) | IAM + S3 + EC2 | IAM, S3, EC2, Security Groups |
-| [Lab 03](./lab-03-vpc-networking.md/) | VPC desde cero | VPC, Subnets, IGW, NAT Gateway, Route Tables |
-| [Lab 04](./lab-04-vpc-ec2-s3-iam.md/) | Lab integrador | VPC, EC2, S3, IAM Instance Profile |
-| [Lab 05](./lab-05-containers-serverless.md/) | Contenedores y Serverless | EC2, Docker, ECS/Fargate (diseño), Lambda (diseño), SQS, SES |
-| [Lab 06](./lab-06-alb-asg/.md) | ALB + Auto Scaling | ALB, Target Groups, Launch Templates, ASG, CloudWatch |
-| [Lab 07](./lab-07-flask-alb-asg-pytest.md/) | App Flask escalable | Flask, ALB, ASG, pytest, CloudFront |
+| [Lab 02](./lab-02-iam-s3-ec2/) | IAM + S3 + EC2 | IAM, S3, EC2, Security Groups |
+| [Lab 03](./lab-03-vpc-networking/) | VPC desde cero | VPC, Subnets, IGW, NAT Gateway, Route Tables |
+| [Lab 04](./lab-04-vpc-ec2-s3-iam/) | Lab integrador | VPC, EC2, S3, IAM Instance Profile |
+| [Lab 05](./lab-05-containers-serverless/) | Contenedores y Serverless | EC2, Docker, ECS/Fargate (diseño), Lambda (diseño), SQS, SES |
+| [Lab 06](./lab-06-alb-asg/) | ALB + Auto Scaling | ALB, Target Groups, Launch Templates, ASG, CloudWatch |
+| [Lab 07](./lab-07-flask-alb-asg-pytest/) | App Flask escalable | Flask, ALB, ASG, pytest, CloudFront |
 
 ---
 
